@@ -1,8 +1,8 @@
 class Cadence < Formula
   desc "Synced, animated lyrics on the Mac lock screen for Spotify, Apple Music and YouTube"
   homepage "https://github.com/bplyashwanth1-stack/Cadence"
-  url "https://github.com/bplyashwanth1-stack/Cadence/archive/refs/tags/v1.2.tar.gz"
-  sha256 "c7fbe391718008c23779b2654111f26d207f75e4f14258848b1088e53927806c"
+  url "https://github.com/bplyashwanth1-stack/Cadence/archive/refs/tags/v1.3.tar.gz"
+  sha256 "d261b02069f030af7356eada487ef064e6f32c8d2e9e9d1f4440d91614017478"
   license "MIT"
 
   depends_on macos: :sonoma
