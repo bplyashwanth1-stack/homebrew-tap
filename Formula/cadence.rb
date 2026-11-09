@@ -1,11 +1,10 @@
 class Cadence < Formula
   desc "Synced, animated lyrics on the Mac lock screen for Spotify, Apple Music and YouTube"
   homepage "https://github.com/bplyashwanth1-stack/Cadence"
-  url "https://github.com/bplyashwanth1-stack/Cadence/archive/refs/tags/v1.0.tar.gz"
-  sha256 "a8ddee317d9fb05516fa0b0ed26fa4a22df9d7e70667c8297dd7468c28333b99"
+  url "https://github.com/bplyashwanth1-stack/Cadence/archive/refs/tags/v1.1.tar.gz"
+  sha256 "d3a69c7be0baea16c276e34204db3428ddc70e41bd9d33d2f7d3a94cc16485b0"
   license "MIT"
 
-  depends_on arch: :arm64
   depends_on macos: :sonoma
 
   def install
@@ -15,7 +14,8 @@ class Cadence < Formula
     cp "Info.plist", contents
     system "/usr/libexec/PlistBuddy", "-c", "Set :CFBundleShortVersionString #{version}", contents/"Info.plist"
     cp Dir["Fonts/*.ttf"], contents/"Resources/Fonts"
-    system "swiftc", "-O", "-swift-version", "5", "-target", "arm64-apple-macos14.0",
+    arch = Hardware::CPU.arm? ? "arm64" : "x86_64"
+    system "swiftc", "-O", "-swift-version", "5", "-target", "#{arch}-apple-macos14.0",
            *Dir["Sources/*.swift"], "-o", contents/"MacOS/Cadence"
     system "codesign", "--force", "--sign", "-", prefix/"Cadence.app"
   end
