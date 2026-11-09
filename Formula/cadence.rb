@@ -13,6 +13,7 @@ class Cadence < Formula
     (contents/"Resources/Fonts").mkpath
     cp "Info.plist", contents
     system "/usr/libexec/PlistBuddy", "-c", "Set :CFBundleShortVersionString #{version}", contents/"Info.plist"
+    system "/usr/libexec/PlistBuddy", "-c", "Set :CFBundleVersion #{version}", contents/"Info.plist"
     cp Dir["Fonts/*.ttf"], contents/"Resources/Fonts"
     arch = Hardware::CPU.arm? ? "arm64" : "x86_64"
     system "swiftc", "-O", "-swift-version", "5", "-target", "#{arch}-apple-macos14.0",
